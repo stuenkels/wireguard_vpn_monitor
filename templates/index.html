@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circlerock VPN2 Monitoring</title>
+    <style>
+        body { font-family: Arial; background-color: #f2f2f2; padding: 20px; }
+        .container { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; }
+        h2 { color: #333; }
+        .alert { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Circlerock VPN2 Monitoring</h2>
+        {% if message %}
+        <p class="alert">{{ message }}</p>
+        {% endif %}
+        <p><strong>CPU Usage:</strong> {{ cpu_percent }}% ({{ cpu_cores }} cores)</p>
+        <p><strong>Memory Usage:</strong> {{ mem_percent }}%</p>
+        <p><strong>Wireguard Interface:</strong> {{ wg_interface }}</p>
+        <p><strong>Wireguard:</strong> Sent {{ tx_bytes }} bytes, Received {{ rx_bytes }} bytes</p>
+    </div>
+</body>
+</html>
