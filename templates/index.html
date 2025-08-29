@@ -2,24 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Link scripts, chart.js stored locally for offline access -->
+    <script src="{{ url_for('static', filename='chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='stats.js') }}"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
     <title>Circlerock VPN2 Monitoring</title>
-    <style>
-        body { font-family: Arial; background-color: #f2f2f2; padding: 20px; }
-        .container { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; }
-        h2 { color: #333; }
-        .alert { color: red; font-weight: bold; }
-    </style>
+
 </head>
 <body>
     <div class="container">
-        <h2>Circlerock VPN2 Monitoring</h2>
-        {% if message %}
-        <p class="alert">{{ message }}</p>
-        {% endif %}
-        <p><strong>CPU Usage:</strong> {{ cpu_percent }}% ({{ cpu_cores }} cores)</p>
-        <p><strong>Memory Usage:</strong> {{ mem_percent }}%</p>
-        <p><strong>Wireguard Interface:</strong> {{ wg_interface }}</p>
-        <p><strong>Wireguard:</strong> Sent {{ tx_bytes }} bytes, Received {{ rx_bytes }} bytes</p>
+        <center><h2>Circlerock VPN2 Monitoring</h2></center>
+        <canvas id="cpu_chart"></canvas>
+        <p>Memory Usage: <span id="mem">Loading...</span></p>
+        <p>WireGuard Interface: <span id="iface">Loading...</span></p>
+        <p>RX Bytes: <span id="rx">Loading...</span></p>
+        <p>TX Bytes: <span id="tx">Loading...</span></p>
     </div>
 </body>
 </html>
