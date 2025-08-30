@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!--Favecon, ICOfile has 16, 32, and 48 resolution-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/media/favicon.ico') }}">
+
     <!-- Link scripts, chart.js stored locally for offline access -->
     <script src="{{ url_for('static', filename='chart.js') }}"></script>
     <script src="{{ url_for('static', filename='stats.js') }}"></script>

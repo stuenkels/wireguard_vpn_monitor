@@ -1,7 +1,7 @@
 import psutil 
 import subprocess
 from flask import Flask, render_template, jsonify
-import json
+import configparser
 from monitor import NetMonitor
 
 monitor = NetMonitor(interface='eth0')
@@ -21,8 +21,6 @@ def stats():
         mem_percent = psutil.virtual_memory().percent
         wg_interface = subprocess.check_output(["wg", "show", "interfaces"]).decode().strip()
 
-        interface_output = subprocess.check_output(["ip", "-s", "-j", "link", "show", wg_interface])
-        interface_output_json = json.loads(interface_output)
         
         rx_bytes, tx_bytes = monitor.get_throughput()
         

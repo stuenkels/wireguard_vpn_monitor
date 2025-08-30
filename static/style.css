@@ -16,7 +16,7 @@ body {
 
 @font-face {
   font-family: caveman;
-  src: url(caveman.ttf);
+  src: url(media/caveman.ttf);
 }
 
 #titlebar{
