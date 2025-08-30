@@ -15,7 +15,6 @@ def index():
 
 @app.route('/stats')
 def stats():
-    print(psutil.net_io_counters())
 
     try:
         cpu_percent = psutil.cpu_percent(interval=1)

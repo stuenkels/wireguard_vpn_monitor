@@ -63,7 +63,7 @@ function createChart(id, title){
             scales: {
                 y: {
                     min: 0,
-                    // max: 100,
+                    max: 100,
                     ticks: {
                       stepSize: 10
                     }
@@ -102,38 +102,6 @@ function updateChart(chart, data, alertThreashold){
 
     }
     
-    chart.update();
-}
-
-function updateNetworkChart(chart, data1, data2){
-    const date = new Date();
-    const time = date.toLocaleTimeString();
-
-    chart.data.labels.push(time);
-    chart.data.datasets[0].data.push(data1/1000); //return kilobytes of throughput
-    chart.data.datasets[1].data.push(data2/1000); 
-    //remove old data points
-    if (chart.data.labels.length > maxDataPoints) {
-            chart.data.labels.shift();
-            chart.data.datasets[0].data.shift();
-            chart.data.datasets[1].data.shift();
-    }
-    //alert color
-    // if(data>alertThreashold){
-    //     chart.data.datasets[0].borderColor = 'rgb(220, 53, 69)';
-    //     chart.data.datasets[0].backgroundColor = 'rgba(220, 53, 69, 0.3)';
-
-    // }else{
-    //     chart.data.datasets[0].borderColor = 'rgb(75, 192, 192)';
-    //     chart.data.datasets[0].backgroundColor = 'rgba(200, 200, 200, 0.3)';
-
-    // }
-
-    //update y scale
-   
-
-    
-    //publish changes
     chart.update();
 }
 
@@ -183,13 +151,42 @@ function createNetworkChart(id, title1, title2){
     });
 }
 
+function updateNetworkChart(chart, data1, data2){
+    const date = new Date();
+    const time = date.toLocaleTimeString();
 
+    chart.data.labels.push(time);
+    chart.data.datasets[0].data.push(data1/1000); //return kilobytes of throughput
+    chart.data.datasets[1].data.push(data2/1000); 
+    //remove old data points
+    if (chart.data.labels.length > maxDataPoints) {
+            chart.data.labels.shift();
+            chart.data.datasets[0].data.shift();
+            chart.data.datasets[1].data.shift();
+    }
+    //alert color
+    // if(data>alertThreashold){
+    //     chart.data.datasets[0].borderColor = 'rgb(220, 53, 69)';
+    //     chart.data.datasets[0].backgroundColor = 'rgba(220, 53, 69, 0.3)';
+
+    // }else{
+    //     chart.data.datasets[0].borderColor = 'rgb(75, 192, 192)';
+    //     chart.data.datasets[0].backgroundColor = 'rgba(200, 200, 200, 0.3)';
+
+    // }
+
+    //update y scale
+   
+
+    
+    //publish changes
+    chart.update();
+}
 
 let cpuChart;
 let memChart;
 let networkChart;
 const maxDataPoints = 30; 
-
 
 window.onload = () => {
     cpuChart = createChart('cpu_chart', 'CPU Usage (%)');
