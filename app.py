@@ -2,6 +2,10 @@ import psutil
 import subprocess
 from flask import Flask, render_template, jsonify
 import json
+from monitor import NetMonitor
+
+monitor = NetMonitor(interface='eth0')
+
 
 app = Flask(__name__)
 
@@ -11,20 +15,31 @@ def index():
 
 @app.route('/stats')
 def stats():
-    cpu_percent = psutil.cpu_percent(interval=1)
-    mem_percent = psutil.virtual_memory().percent
-    wg_interface = subprocess.check_output(["wg", "show", "interfaces"]).decode().strip()
-    net_io = psutil.net_io_counters()
+    print(psutil.net_io_counters())
 
-    
-    interface_output = subprocess.check_output(["ip", "-s", "-j", "link", "show", wg_interface])
-    interface_output_json = json.loads(interface_output)
-    rx_bytes = interface_output_json[0]["stats64"]["rx"]["bytes"]
-    tx_bytes = interface_output_json[0]["stats64"]["tx"]["bytes"]
+    try:
+        cpu_percent = psutil.cpu_percent(interval=1)
+        mem_percent = psutil.virtual_memory().percent
+        wg_interface = subprocess.check_output(["wg", "show", "interfaces"]).decode().strip()
 
+        interface_output = subprocess.check_output(["ip", "-s", "-j", "link", "show", wg_interface])
+        interface_output_json = json.loads(interface_output)
+        
+        rx_bytes, tx_bytes = monitor.get_throughput()
+        
+        success = 'true'
+
+    except:
+        success = 'false'
+        cpu_percent = 0
+        mem_percent = 0
+        wg_interface = 0
+        rx_bytes = 0
+        tx_bytes = 0
 
     
     return jsonify({
+        "webserver_status": success,
         "cpu_percent": cpu_percent,
         "mem_percent": mem_percent,
         "wg_interface": wg_interface,

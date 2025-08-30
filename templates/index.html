@@ -13,12 +13,13 @@
 </head>
 <body>
     <div class="container">
-        <center><h2>Circlerock VPN2 Monitoring</h2></center>
-        <canvas id="cpu_chart"></canvas>
-        <p>Memory Usage: <span id="mem">Loading...</span></p>
-        <p>WireGuard Interface: <span id="iface">Loading...</span></p>
-        <p>RX Bytes: <span id="rx">Loading...</span></p>
-        <p>TX Bytes: <span id="tx">Loading...</span></p>
+        <center><h1 id="titlebar">Circlerock VPN2 Monitor</h1></center>
+        <center><h2><span class="error" id="status">Loading...</span></h2></center>
+        <center><p><span class="error" id="status_message">Loading...</span></p></center>
+        <canvas class="chart" id="cpu_chart"></canvas>
+        <canvas class="chart" id="mem_chart"></canvas>
+        <canvas class="chart" id="net_chart"></canvas>
+        
     </div>
 </body>
 </html>
