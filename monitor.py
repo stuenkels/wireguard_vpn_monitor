@@ -3,7 +3,7 @@ import time
 
 
 class NetMonitor:
-    def __init__(self, interface='wg0'):
+    def __init__(self, interface='eth0'):
         self.interface = interface
         self.prev_counters = psutil.net_io_counters(pernic=True)[interface]
         self.prev_time = time.monotonic()
@@ -20,5 +20,5 @@ class NetMonitor:
 
         self.prev_counters = current_counters
         self.prev_time = current_time
-
+        # print("RX: " + str(rx) + " TX: " + str(tx))
         return rx, tx  # bytes/sec

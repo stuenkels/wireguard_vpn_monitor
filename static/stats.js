@@ -135,6 +135,11 @@ function createNetworkChart(id, title1, title2){
             scales: {
                 y: {
                     min: 0,
+                    title: {
+                        display: true,
+                        text: "Bytes",
+                        my_custom_val : 0
+                    },
                     ticks: {
                       stepSize: 10
                     }
@@ -155,30 +160,71 @@ function updateNetworkChart(chart, data1, data2){
     const date = new Date();
     const time = date.toLocaleTimeString();
 
-    chart.data.labels.push(time);
-    chart.data.datasets[0].data.push(data1/1000); //return kilobytes of throughput
-    chart.data.datasets[1].data.push(data2/1000); 
-    //remove old data points
-    if (chart.data.labels.length > maxDataPoints) {
-            chart.data.labels.shift();
-            chart.data.datasets[0].data.shift();
-            chart.data.datasets[1].data.shift();
-    }
-    //alert color
-    // if(data>alertThreashold){
-    //     chart.data.datasets[0].borderColor = 'rgb(220, 53, 69)';
-    //     chart.data.datasets[0].backgroundColor = 'rgba(220, 53, 69, 0.3)';
-
-    // }else{
-    //     chart.data.datasets[0].borderColor = 'rgb(75, 192, 192)';
-    //     chart.data.datasets[0].backgroundColor = 'rgba(200, 200, 200, 0.3)';
-
-    // }
-
-    //update y scale
-   
+    const old_units = chart.options.scales.y.title.my_custom_val;
+    let new_units = "Bytes";
 
     
+    //translate text to multiple
+    let multiple = 1;
+    if(old_units == 1){
+        console.log("Updated here to kilo");
+        multiple == 1000;
+    }else if(old_units == 2){
+        multiple == 1000000
+        console.log("Updated here to mega");
+    }
+
+
+
+    let data_max = 0;
+    //set everything back to bytes and get largest value
+    for(let i = 0; i<2; i++){
+        chart.data.datasets[i].data = chart.data.datasets[i].data.map(function(element) {
+            element = element*multiple;
+            if(element>data_max){
+                data_max = element;
+            }
+            return element;
+        });
+    } 
+
+    console.log("Datamax" + data_max);
+
+    if(data_max>1000000){
+        new_units = "Megabytes";
+        chart.options.scales.y.title.my_custom_val = 2;
+        multiple = 0.000001; 
+        
+    }else if(data_max>1000){
+        new_units = "Kilobytes";
+        chart.options.scales.y.title.my_custom_val =1;
+        multiple = 0.001;
+    }else{
+        chart.options.scales.y.title.my_custom_val = 0;
+    }
+
+    //set everything to updated unit
+    for(let i = 0; i<2; i++){
+        chart.data.datasets[i].data = chart.data.datasets[i].data.map(function(element) {
+            return element*multiple;
+        });
+    }
+
+
+  
+    //Add information to chart
+    chart.data.labels.push(time);
+    chart.data.datasets[0].data.push(data1*0.001);
+    chart.data.datasets[1].data.push(data2*0.001); 
+    chart.options.scales.y.title.text = new_units;
+
+    //remove old datapoints
+    // if (chart.data.labels.length > maxDataPoints) {
+    //         chart.data.labels.shift();
+    //         chart.data.datasets[0].data.shift();
+    //         chart.data.datasets[1].data.shift();
+    // }
+
     //publish changes
     chart.update();
 }
