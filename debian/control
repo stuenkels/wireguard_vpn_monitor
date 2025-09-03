@@ -1,12 +1,11 @@
-Source: vpn_monitor
-Binary: vpn_monitor
+Source: vpn-monitor
 Section: utils
 Priority: optional
 Maintainer: Elijah Stuenkel eli.stuenkel@gmail.com
 Homepage: github.com/stuenkels
+Build-Depends: build-essential, debhelper (>= 9)
 
 
-Standards-Version: 4.5.0
 Package: vpn-monitor
-Architecture: all
+Architecture: any
 Description: Monitors wireguard VPN traffic

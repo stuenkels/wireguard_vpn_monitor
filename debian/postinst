@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+# Enable and start systemd service after installation
+if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload
+    systemctl enable myapp.service || true
+    systemctl start myapp.service || true
+fi
+
+exit 0
