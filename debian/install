@@ -1,1 +1,3 @@
-vpn_monitor.service /etc/systemd/system/multi-user.target.wants/
+systemd/vpn_monitor.service /etc/systemd/system/multi-user.target.wants/
+app/app.py /usr/bin/vpn_monitor
+app/monitor.py /usr/bin/vpn_monitor
