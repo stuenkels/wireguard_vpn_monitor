@@ -1,3 +1,9 @@
-systemd/vpn_monitor.service /etc/systemd/system/multi-user.target.wants/
 app/app.py /usr/bin/vpn_monitor
 app/monitor.py /usr/bin/vpn_monitor
+
+app/static/* /usr/share/vpn_monitor/static/
+app/static/media/* /usr/share/vpn_monitor/static/media/
+
+app/templates/* /usr/share/vpn_monitor/templates/
+
+nginx/vpn_monitor.conf  /etc/nginx/sites-available

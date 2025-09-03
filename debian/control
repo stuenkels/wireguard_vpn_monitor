@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Elijah Stuenkel eli.stuenkel@gmail.com
 Homepage: github.com/stuenkels
-Build-Depends: build-essential, debhelper (>= 9)
+Build-Depends: build-essential, debhelper (>= 9), dh-python
 
 
 Package: vpn-monitor

@@ -2,3 +2,5 @@
 /app/__pycache__
 /app/tests
 /.vscode
+/debian/vpn-monitor
+/debian/.debhelper
