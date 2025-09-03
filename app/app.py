@@ -6,7 +6,6 @@ from monitor import NetMonitor
 
 monitor = NetMonitor(interface='eth0')
 
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -15,13 +14,11 @@ def index():
 
 @app.route('/stats')
 def stats():
-
     try:
         cpu_percent = psutil.cpu_percent(interval=1)
         mem_percent = psutil.virtual_memory().percent
         wg_interface = subprocess.check_output(["wg", "show", "interfaces"]).decode().strip()
 
-        
         rx_bytes, tx_bytes = monitor.get_throughput()
         
         success = 'true'
@@ -44,5 +41,6 @@ def stats():
         "tx_bytes": tx_bytes,
     })
 
+
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
