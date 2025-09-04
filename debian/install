@@ -1,0 +1,9 @@
+app/app.py /usr/bin/vpn_monitor
+app/monitor.py /usr/bin/vpn_monitor
+
+app/static/* /usr/bin/vpn_monitor/static/
+app/static/media/* /usr/bin/vpn_monitor/static/media/
+
+app/templates/* /usr/bin/vpn_monitor/templates/
+
+nginx/vpn_monitor.conf  /etc/nginx/sites-available

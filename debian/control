@@ -1,0 +1,12 @@
+Source: vpn-monitor
+Section: utils
+Priority: optional
+Maintainer: Elijah Stuenkel
+Homepage: github.com/stuenkels/wireguard_vpn_monitor
+Build-Depends: build-essential, debhelper (>= 10), dh-python
+
+
+Package: vpn-monitor
+Architecture: any
+Description: Monitors wireguard VPN traffic
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3, python3-flask, python3-psutil, gunicorn3

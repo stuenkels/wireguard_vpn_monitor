@@ -10,6 +10,21 @@ body {
      max-width: 600px;
      margin: auto;
 }
- h2 {
+ h1 {
      color: #333;
+}
+
+@font-face {
+  font-family: caveman;
+  src: url(media/caveman.ttf);
+}
+
+#titlebar{
+     font-family: caveman;
+     font-size: 90%;
+}
+
+
+.error{
+     color: #dc3545;
 }

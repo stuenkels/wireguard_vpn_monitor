@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!--Favecon, ICOfile has 16, 32, and 48 resolution-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/media/favicon.ico') }}">
+
+    <!-- Link scripts, chart.js stored locally for offline access -->
+    <script src="{{ url_for('static', filename='chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='stats.js') }}"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <title>Circlerock VPN2 Monitoring</title>
+
+</head>
+<body>
+    <div class="container">
+        <center><h1 id="titlebar">Circlerock VPN2 Monitor</h1></center>
+        <center><h2><span class="error" id="status">Loading...</span></h2></center>
+        <center><p><span class="error" id="status_message">Loading...</span></p></center>
+        <canvas class="chart" id="cpu_chart"></canvas>
+        <canvas class="chart" id="mem_chart"></canvas>
+        <canvas class="chart" id="net_chart"></canvas>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+[Unit]
+Description=VPN Monitoring Webpage
+After=network.target wg-quick@wg0.service
+Requires=wg-quick@wg0.service
+
+[Service]
+User=vpnmonitor
+Group=vpnmonitor
+WorkingDirectory=/usr/bin/vpn_monitor
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:/usr/share/vpn_monitor/vpn_monitor.sock app:app
+
+[Install]
+WantedBy=multi-user.target
