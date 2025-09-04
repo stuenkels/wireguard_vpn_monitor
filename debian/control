@@ -1,7 +1,7 @@
 Source: vpn-monitor
 Section: utils
 Priority: optional
-Maintainer: Elijah Stuenkel eli.stuenkel@gmail.com
+Maintainer: Elijah Stuenkel
 Homepage: github.com/stuenkels/wireguard_vpn_monitor
 Build-Depends: build-essential, debhelper (>= 10), dh-python
 

@@ -1,10 +1,10 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: vpn-monitor
-Upstream-Contact: Elijah Stuenkel <eli.stuenkel@gmail.com>
+Upstream-Contact: Elijah Stuenkel 
 Source: https://github.com/stuenkels/vpn_monitor
 
 Files: *
-Copyright: 2025 Elijah Stuenkel <eli.stuenkel@gmail.com>
+Copyright: 2025 Elijah Stuenkel
 License: MIT
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

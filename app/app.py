@@ -4,7 +4,7 @@ from flask import Flask, render_template, jsonify
 import configparser
 from monitor import NetMonitor
 
-monitor = NetMonitor(interface='enX0')
+monitor = NetMonitor(interface='wg0')
 
 app = Flask(__name__)
 
