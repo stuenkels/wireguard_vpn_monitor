@@ -13,3 +13,14 @@ This is a <em>highly</em> specialized systemd service packaged up into a nice li
 
 Built using `dpkg-buildpackage -b`
 
+---
+## This does not come with https settup
+Guide to setting up certbot to run automatic certificate renewal and management
+
+Install Certbot
+
+`sudo apt install certbot python3-certbot-nginx`
+
+Run Certbot with the given domain
+
+`sudo certbot --nginx -d www.example.com`
