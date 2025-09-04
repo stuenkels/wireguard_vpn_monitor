@@ -1,3 +1,17 @@
+vpn-monitor (1.0.0-4) unstable; urgency=medium
+
+  * user perms fixed?
+  * Monitors WireGuard VPN traffic.
+
+ -- Elijah Stuenkel <eli.stuenkel@gmail.com>  Thu, 03 Sep 2025 12:00:01 -0400
+
+vpn-monitor (1.0.0-3) unstable; urgency=medium
+
+  * fixed suff
+  * Monitors WireGuard VPN traffic.
+
+ -- Elijah Stuenkel <eli.stuenkel@gmail.com>  Thu, 03 Sep 2025 12:00:01 -0400
+
 vpn-monitor (1.0.0-2) unstable; urgency=medium
 
   * Test
