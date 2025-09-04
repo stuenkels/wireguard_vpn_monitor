@@ -3,7 +3,7 @@ import time
 
 
 class NetMonitor:
-    def __init__(self, interface='eth0'):
+    def __init__(self, interface='enX0'):
         self.interface = interface
         self.prev_counters = psutil.net_io_counters(pernic=True)[interface]
         self.prev_time = time.monotonic()

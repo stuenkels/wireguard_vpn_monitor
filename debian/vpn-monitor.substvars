@@ -1,2 +1,2 @@
-misc:Depends=
+misc:Depends=sysuser-helper (>= 1.6)
 misc:Pre-Depends=
